@@ -33,7 +33,7 @@ public class ThirdPersonController : MonoBehaviour
 
         bool run = Input.GetAxis("Fire3") > 0.1f; // shift
         bool crouch = Input.GetAxis("Fire1") > 0.1f; // ctrl
-
+        bool shiftPressed = Input.GetKey(KeyCode.LeftShift);
         if (run && movement > 0.0f)
         {
             movement *= runSpeedModifier;
@@ -64,14 +64,14 @@ public class ThirdPersonController : MonoBehaviour
             jump = false;
         }
 
-        ApplyAnimations(movement, jump, crouch);
+        ApplyAnimations(movement, shiftPressed, jump, crouch);
     }
 
-    void ApplyAnimations(float movement, bool jumpPressed, bool crouchHeld)
+    void ApplyAnimations(float movement, bool shiftPressed, bool jumpPressed, bool crouchHeld)
     {
         Animator animator = GetComponentInChildren<Animator>();
         animator.SetFloat("movementSpeed", movement);
-        
+        animator.SetBool("shiftPressed", shiftPressed);
 
         /* You can write all of your animation code in here.
          * 
