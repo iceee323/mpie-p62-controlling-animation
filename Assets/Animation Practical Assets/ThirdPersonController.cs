@@ -34,6 +34,7 @@ public class ThirdPersonController : MonoBehaviour
         bool run = Input.GetAxis("Fire3") > 0.1f; // shift
         bool crouch = Input.GetAxis("Fire1") > 0.1f; // ctrl
         bool shiftPressed = Input.GetKey(KeyCode.LeftShift);
+        
         if (run && movement > 0.0f)
         {
             movement *= runSpeedModifier;
